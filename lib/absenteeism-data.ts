@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import uceOverviewJson from "@/data/uce-overview.json";
 import { isSetor, isTurno, predictAbsenteeism, type Setor, type Turno } from "./prediction";
 
 export type EmployeeRecord = {
@@ -48,7 +49,40 @@ export type DatasetOverview = {
   riscoPorSetor: SectorSummary[];
   riscoPorTurno: TurnoSummary[];
   fatoresCriticos: string[];
+  uce: UceOverview;
   historicoInicial: DemoHistoryItem[];
+};
+
+export type UceRankItem = {
+  label: string;
+  total: number;
+};
+
+export type UceOverview = {
+  generatedAt: string;
+  workforce: {
+    activeEmployees: number;
+    scheduledEmployees: number;
+    employeesWithPointHistory: number;
+    gender: UceRankItem[];
+    ageRange: UceRankItem[];
+    pointMode: UceRankItem[];
+    tenureRange: UceRankItem[];
+    topCostCenters: UceRankItem[];
+    topFunctions: UceRankItem[];
+    topSchedules: UceRankItem[];
+  };
+  pointHistory: {
+    records: number;
+    absences: number;
+    medicalCertificates: number;
+    vacations: number;
+    leaves: number;
+    overtimeHours: number;
+    absenceRate: number;
+    certificateRate: number;
+    monthlyAbsences: UceRankItem[];
+  };
 };
 
 const csvPath = path.join(process.cwd(), "dados_absenteismo.csv");
@@ -187,6 +221,7 @@ export async function getDatasetOverview(): Promise<DatasetOverview> {
       `${altoRiscoEstimado} colaboradores simulados entram na faixa de alerta preditivo`,
       `${Math.round(records.filter((record) => record.distancia > 20).length / Math.max(records.length, 1) * 1000) / 10}% da base mora acima de 20 km da unidade`,
     ],
+    uce: uceOverviewJson as UceOverview,
     historicoInicial: buildInitialHistory(records),
   };
 }

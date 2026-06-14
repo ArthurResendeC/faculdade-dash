@@ -10,6 +10,7 @@ import { PredictionPanel } from "@/components/dashboard/PredictionPanel";
 import { SectorOverview } from "@/components/dashboard/SectorOverview";
 import { SupportPanels } from "@/components/dashboard/SupportPanels";
 import type { HistoryItem } from "@/components/dashboard/types";
+import { UceDataPanels } from "@/components/dashboard/UceDataPanels";
 import type { DatasetOverview } from "@/lib/absenteeism-data";
 import type { PredictionResult, Setor, Turno } from "@/lib/prediction";
 
@@ -109,7 +110,7 @@ export function DashboardClient({ overview }: { overview: DatasetOverview }) {
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-[1440px] p-7 max-md:p-[18px]">
-      <DashboardHeader totalColaboradores={overview.totalColaboradores} />
+      <DashboardHeader totalColaboradores={overview.uce.workforce.activeEmployees} />
       <KpiGrid overview={overview} />
 
       <section
@@ -142,6 +143,7 @@ export function DashboardClient({ overview }: { overview: DatasetOverview }) {
       </section>
 
       <ImpactGrid overview={overview} />
+      <UceDataPanels uce={overview.uce} />
       <SupportPanels overview={overview} />
       <HistoryTable history={history} onRestoreDatasetHistory={() => updateHistory(overview.historicoInicial)} />
     </main>

@@ -21,6 +21,10 @@ como referencia de geracao/treino, mas nao sao usados pelo app Next.js.
 - `lib/prediction.ts`: preditor TypeScript compartilhado pela API.
 - `lib/absenteeism-data.ts`: parser e agregador do CSV, com KPIs, risco por
   setor/turno e registros iniciais da tabela.
+- `data/uce-overview.json`: resumo anonimizado gerado a partir das planilhas UCE
+  locais.
+- `scripts/generate-uce-overview.mjs`: gera novamente o resumo agregado a partir
+  da pasta `planilhas/`.
 - `treinar_modelo.py`: treina novamente o modelo a partir de
   `dados_absenteismo.csv` apenas para referencia historica.
 - `gerador_dados.py`: gera a base sintetica usada no treino.
@@ -38,6 +42,8 @@ como referencia de geracao/treino, mas nao sao usados pelo app Next.js.
 - Possiveis integracoes futuras com ponto eletronico, ERP de RH, atestados,
   afastamentos e logs de producao.
 - Diretrizes de LGPD para dados anonimizados e agregados.
+- Dados reais agregados da UCE: base de ativos, horários contratuais, histórico
+  de ponto, faltas, atestados, férias, horas extras, centros de custo e funções.
 
 ## Rodar localmente
 
@@ -65,3 +71,6 @@ ou armazenamento persistente.
 
 O Tailwind CSS esta configurado via `@tailwindcss/postcss`, seguindo o fluxo
 oficial atual para Next.js.
+
+As planilhas brutas ficam ignoradas pelo Git por conterem dados pessoais. O app
+usa apenas `data/uce-overview.json`, que contem contagens e rankings agregados.

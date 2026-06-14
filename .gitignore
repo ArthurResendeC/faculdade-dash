@@ -2,6 +2,8 @@ node_modules
 .next
 .venv
 .env*.local
+planilhas/
+*.docx
 __pycache__
 *.pyc
 tsconfig.tsbuildinfo

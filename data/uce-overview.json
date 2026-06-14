@@ -1,0 +1,242 @@
+{
+  "generatedAt": "2026-06-14T17:54:55.780Z",
+  "workforce": {
+    "activeEmployees": 712,
+    "scheduledEmployees": 592,
+    "employeesWithPointHistory": 40,
+    "gender": [
+      {
+        "label": "Masculino",
+        "total": 298
+      },
+      {
+        "label": "Feminino",
+        "total": 295
+      },
+      {
+        "label": "Não informado",
+        "total": 119
+      }
+    ],
+    "ageRange": [
+      {
+        "label": "31 a 40 anos",
+        "total": 222
+      },
+      {
+        "label": "21 a 30 anos",
+        "total": 188
+      },
+      {
+        "label": "Não informado",
+        "total": 119
+      },
+      {
+        "label": "41 a 50 anos",
+        "total": 118
+      },
+      {
+        "label": "51 a 60 anos",
+        "total": 29
+      },
+      {
+        "label": "Até 20 anos",
+        "total": 27
+      },
+      {
+        "label": "Mais de 60 anos",
+        "total": 9
+      }
+    ],
+    "pointMode": [
+      {
+        "label": "Bate Ponto",
+        "total": 494
+      },
+      {
+        "label": "Não informado",
+        "total": 119
+      },
+      {
+        "label": "Não Utiliza Efetividade",
+        "total": 76
+      },
+      {
+        "label": "Não Bate Ponto",
+        "total": 23
+      }
+    ],
+    "tenureRange": [
+      {
+        "label": "5 a 10 anos",
+        "total": 156
+      },
+      {
+        "label": "6 -1 ano",
+        "total": 127
+      },
+      {
+        "label": "Não informado",
+        "total": 119
+      },
+      {
+        "label": "2 a 5 anos",
+        "total": 117
+      },
+      {
+        "label": "1 ano",
+        "total": 82
+      },
+      {
+        "label": "10 a 15 anos",
+        "total": 45
+      },
+      {
+        "label": "15 a 20 anos",
+        "total": 32
+      },
+      {
+        "label": "3 - 6 meses",
+        "total": 18
+      }
+    ],
+    "topCostCenters": [
+      {
+        "label": "Não informado",
+        "total": 119
+      },
+      {
+        "label": "FRETE PRIM SEC-7L",
+        "total": 81
+      },
+      {
+        "label": "EXP E ARMAZENS7L",
+        "total": 69
+      },
+      {
+        "label": "ENCAIXOTAMENTO LINHA Doritos",
+        "total": 49
+      },
+      {
+        "label": "ALMO INSUMOS 7L",
+        "total": 43
+      },
+      {
+        "label": "LINHA PC 1 7L",
+        "total": 42
+      }
+    ],
+    "topFunctions": [
+      {
+        "label": "AUXILIAR DE PRODUCAO",
+        "total": 184
+      },
+      {
+        "label": "OPERADOR MULTIFUNCIONAL",
+        "total": 131
+      },
+      {
+        "label": "Não informado",
+        "total": 119
+      },
+      {
+        "label": "MOTORISTA CARRETEIRO",
+        "total": 76
+      },
+      {
+        "label": "OPERADOR CONFERENTE",
+        "total": 34
+      },
+      {
+        "label": "CONFERENTE",
+        "total": 24
+      }
+    ],
+    "topSchedules": [
+      {
+        "label": "05:50 - 10:00 | 11:10 - 14:20",
+        "total": 161
+      },
+      {
+        "label": "14:10 - 17:00 | 18:10 - 22:35",
+        "total": 139
+      },
+      {
+        "label": "22:25 - 00:00 | 01:10 - 06:00",
+        "total": 137
+      },
+      {
+        "label": "14:00 - 19:00 | 20:00 - 22:20",
+        "total": 76
+      },
+      {
+        "label": "08:00 - 12:00 | 13:00 - 17:30",
+        "total": 35
+      },
+      {
+        "label": "08:30 - 12:00 | 13:00 - 17:30",
+        "total": 14
+      }
+    ]
+  },
+  "pointHistory": {
+    "records": 31280,
+    "absences": 293,
+    "medicalCertificates": 132,
+    "vacations": 2586,
+    "leaves": 0,
+    "overtimeHours": 8782.3,
+    "absenceRate": 0.9,
+    "certificateRate": 0.4,
+    "monthlyAbsences": [
+      {
+        "label": "2024-07",
+        "total": 16
+      },
+      {
+        "label": "2024-12",
+        "total": 16
+      },
+      {
+        "label": "2025-05",
+        "total": 13
+      },
+      {
+        "label": "2023-06",
+        "total": 13
+      },
+      {
+        "label": "2026-05",
+        "total": 12
+      },
+      {
+        "label": "2024-09",
+        "total": 12
+      },
+      {
+        "label": "2023-07",
+        "total": 11
+      },
+      {
+        "label": "2024-06",
+        "total": 11
+      },
+      {
+        "label": "2025-03",
+        "total": 10
+      },
+      {
+        "label": "2025-06",
+        "total": 10
+      },
+      {
+        "label": "2024-08",
+        "total": 10
+      },
+      {
+        "label": "2023-08",
+        "total": 9
+      }
+    ]
+  }
+}
