@@ -38,10 +38,16 @@ export type DemoHistoryItem = {
 export type DatasetOverview = {
   totalColaboradores: number;
   totalFaltas: number;
+  altoRiscoEstimado: number;
+  reservaTecnicaDiaria: number;
+  capacidadeProdutivaEmRisco: number;
+  impactoFolhaMin: number;
+  impactoFolhaMax: number;
   taxaAbsenteismo: number;
   distanciaMedia: number;
   riscoPorSetor: SectorSummary[];
   riscoPorTurno: TurnoSummary[];
+  fatoresCriticos: string[];
   historicoInicial: DemoHistoryItem[];
 };
 
@@ -150,16 +156,37 @@ export async function getDatasetOverview(): Promise<DatasetOverview> {
     .filter((record): record is EmployeeRecord => Boolean(record));
 
   const totalFaltas = records.filter((record) => record.faltou).length;
+  const altoRiscoEstimado = records.filter((record) =>
+    predictAbsenteeism({
+      idade: record.idade,
+      distancia: record.distancia,
+      setor: record.setor,
+      turno: record.turno,
+    }).prediction === 1,
+  ).length;
   const distanciaMedia =
     records.reduce((sum, record) => sum + record.distancia, 0) / Math.max(records.length, 1);
+  const riscoPorSetor = summarizeBySector(records);
+  const riscoPorTurno = summarizeByTurno(records);
 
   return {
     totalColaboradores: records.length,
     totalFaltas,
+    altoRiscoEstimado,
+    reservaTecnicaDiaria: Math.max(1, Math.ceil(totalFaltas / 22)),
+    capacidadeProdutivaEmRisco: 30,
+    impactoFolhaMin: 2,
+    impactoFolhaMax: 7,
     taxaAbsenteismo: percent(totalFaltas, records.length),
     distanciaMedia: Math.round(distanciaMedia * 10) / 10,
-    riscoPorSetor: summarizeBySector(records),
-    riscoPorTurno: summarizeByTurno(records),
+    riscoPorSetor,
+    riscoPorTurno,
+    fatoresCriticos: [
+      `${riscoPorSetor[0]?.setor ?? "Setor crítico"} concentra a maior taxa histórica por setor`,
+      `${riscoPorTurno[0]?.turno ?? "Turno crítico"} apresenta a maior taxa histórica por turno`,
+      `${altoRiscoEstimado} colaboradores simulados entram na faixa de alerta preditivo`,
+      `${Math.round(records.filter((record) => record.distancia > 20).length / Math.max(records.length, 1) * 1000) / 10}% da base mora acima de 20 km da unidade`,
+    ],
     historicoInicial: buildInitialHistory(records),
   };
 }

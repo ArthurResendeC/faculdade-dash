@@ -13,7 +13,10 @@ como referencia de geracao/treino, mas nao sao usados pelo app Next.js.
 
 - `app/page.tsx`: Server Component que le `dados_absenteismo.csv` e passa o
   resumo para a interface.
-- `app/dashboard-client.tsx`: interface React interativa do dashboard.
+- `app/dashboard-client.tsx`: orquestrador client-side de estado, API e
+  historico local.
+- `components/dashboard/*`: componentes pequenos da interface, estilizados com
+  Tailwind CSS.
 - `app/api/predict/route.ts`: endpoint `POST /api/predict`.
 - `lib/prediction.ts`: preditor TypeScript compartilhado pela API.
 - `lib/absenteeism-data.ts`: parser e agregador do CSV, com KPIs, risco por
@@ -23,6 +26,18 @@ como referencia de geracao/treino, mas nao sao usados pelo app Next.js.
 - `gerador_dados.py`: gera a base sintetica usada no treino.
 - O historico da tela inicia com registros do CSV e tambem salva novas analises
   no `localStorage` do navegador.
+
+## O que o prototipo demonstra
+
+- KPIs historicos derivados do CSV.
+- Risco por setor e turno.
+- Fatores criticos da analise preditiva.
+- Estimativa de reserva tecnica diaria.
+- Simulacao de impacto operacional e financeiro com referencias do projeto.
+- Etapas CRISP-DM usadas como trilha metodologica.
+- Possiveis integracoes futuras com ponto eletronico, ERP de RH, atestados,
+  afastamentos e logs de producao.
+- Diretrizes de LGPD para dados anonimizados e agregados.
 
 ## Rodar localmente
 
@@ -47,3 +62,6 @@ sem Python, `scikit-learn`, `.pkl` ou banco de dados. O CSV e lido no servidor
 para popular a demonstracao inicial. Novas analises sem banco ficam restritas ao
 navegador do usuario. Para historico compartilhado entre usuarios, use um banco
 ou armazenamento persistente.
+
+O Tailwind CSS esta configurado via `@tailwindcss/postcss`, seguindo o fluxo
+oficial atual para Next.js.
